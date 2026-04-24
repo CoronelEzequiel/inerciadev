@@ -98,7 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contacto-form form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita el envío POST tradicional que causa el error 405
+            e.preventDefault(); 
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
             
             // Obtener valores del formulario
             const name = document.getElementById('name').value;
@@ -107,19 +112,38 @@ document.addEventListener('DOMContentLoaded', () => {
             const service = serviceSelect.options[serviceSelect.selectedIndex].text;
             const message = document.getElementById('message').value;
 
-            // Formatear mensaje para WhatsApp
-            const phone = "5491158022401"; // Número extraído del HTML
-            const text = `Hola InerciaDev! Mi nombre es ${name} (${email}). Estoy interesado en el servicio de: ${service}. Mensaje: ${message}`;
-            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-            
-            // Mostrar alerta de redirección (opcional)
-            alert('Tu mensaje ha sido procesado. Serás redirigido a WhatsApp para enviarlo directamente a nuestro equipo.');
-            
-            // Abrir WhatsApp en nueva pestaña
-            window.open(whatsappUrl, '_blank');
-
-            // Limpiar formulario
-            contactForm.reset();
+            // Usar FormSubmit para enviar el mail sin backend
+            fetch("https://formsubmit.co/ajax/ezequielcoronel199@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    Nombre: name,
+                    Email: email,
+                    Servicio_de_interes: service,
+                    Mensaje: message,
+                    _subject: `Nuevo contacto en InerciaDev de ${name}`
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+                    contactForm.reset();
+                } else {
+                    alert('Hubo un error al enviar el mensaje. Por favor intenta nuevamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocurrió un error. Por favor, intenta de nuevo o contáctanos por otros medios.');
+            })
+            .finally(() => {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
     }
 
