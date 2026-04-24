@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Obtener valores del formulario
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
             const serviceSelect = document.getElementById('service');
             const service = serviceSelect.options[serviceSelect.selectedIndex].text;
             const message = document.getElementById('message').value;
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({
                     Nombre: name,
                     Email: email,
+                    Telefono: phone,
                     Servicio_de_interes: service,
                     Mensaje: message,
                     _subject: `Nuevo contacto en InerciaDev de ${name}`
