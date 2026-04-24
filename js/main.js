@@ -94,4 +94,33 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 
+    // --- 5. Contact Form Handling ---
+    const contactForm = document.querySelector('.contacto-form form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita el envío POST tradicional que causa el error 405
+            
+            // Obtener valores del formulario
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const serviceSelect = document.getElementById('service');
+            const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+            const message = document.getElementById('message').value;
+
+            // Formatear mensaje para WhatsApp
+            const phone = "5491158022401"; // Número extraído del HTML
+            const text = `Hola InerciaDev! Mi nombre es ${name} (${email}). Estoy interesado en el servicio de: ${service}. Mensaje: ${message}`;
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            
+            // Mostrar alerta de redirección (opcional)
+            alert('Tu mensaje ha sido procesado. Serás redirigido a WhatsApp para enviarlo directamente a nuestro equipo.');
+            
+            // Abrir WhatsApp en nueva pestaña
+            window.open(whatsappUrl, '_blank');
+
+            // Limpiar formulario
+            contactForm.reset();
+        });
+    }
+
 });
