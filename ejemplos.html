@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InerciaDev | Algunos ejemplos para tu Negocio</title>
+    <meta name="description"
+        content="Explora ejemplos de soluciones digitales creadas por InerciaDev para diferentes nichos de mercado.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS (uses existing styles + some specific for this page) -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .ejemplos-hero {
+            padding: 150px 0 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ejemplos-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(110, 86, 207, 0.15) 0%, rgba(13, 14, 21, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .ejemplos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 40px 0 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nicho-card {
+            background: rgba(22, 24, 35, 0.6);
+            border: 1px solid rgba(110, 86, 207, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .nicho-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 15px 30px rgba(110, 86, 207, 0.2);
+        }
+
+        .nicho-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+
+        .nicho-card:hover::after {
+            left: 150%;
+        }
+
+        .nicho-img-wrapper {
+            height: 200px;
+            background: var(--bg-card);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .nicho-img-wrapper i {
+            font-size: 4rem;
+            color: var(--accent-primary);
+            transition: transform 0.4s ease;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 15px rgba(110, 86, 207, 0.4));
+        }
+
+        .nicho-card:hover .nicho-img-wrapper i {
+            transform: scale(1.2);
+            color: var(--accent-secondary);
+        }
+
+        .nicho-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nicho-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .nicho-card:hover .nicho-content h3 {
+            color: var(--accent-primary);
+            text-shadow: 0 0 10px rgba(110, 86, 207, 0.5);
+        }
+
+        .nicho-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .nicho-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: gap 0.3s;
+        }
+
+        .nicho-card:hover .nicho-action {
+            gap: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header id="header" class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-code"></i></span>
+                Inercia<span class="logo-accent">Dev</span>
+            </a>
+
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#empresa" class="nav-link">Empresa</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="ejemplos.html" class="nav-link active">Prototipos Web</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Ejemplos Hero -->
+    <section class="ejemplos-hero">
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-title text-center fade-up">
+                <h2>Soluciones por <span class="text-accent text-glow">Área de Negocio</span></h2>
+                <span class="title-underline center"></span>
+                <p class="subtitle" style="max-width: 700px; margin: 0 auto;">Explora demostraciones y plantillas
+                    adaptadas a diferentes industrias. Cada área de negocio requiere un enfoque único, y nosotros lo
+                    materializamos en código.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejemplos Grid -->
+    <section class="bg-darker">
+        <div class="container">
+            <div class="ejemplos-grid">
+
+                <!-- Logística -->
+                <a href="demos/logistica/index.html" class="nicho-card fade-up">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Logística y Transporte</h3>
+                        <p>Plataforma para empresas de transporte de cargas, optimización de rutas y seguimiento de
+                            flotas.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <!-- Plomería -->
+                <a href="demos/plomeria/index.html" class="nicho-card fade-up delay-1">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Servicios de Urgencia</h3>
+                        <p>Plomería y gasistas matriculados. Landing enfocada en conversiones rápidas y llamadas de
+                            emergencia.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <!-- Profesionales -->
+                <a href="demos/profesionales/index.html" class="nicho-card fade-up delay-2">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Profesionales Independientes</h3>
+                        <p>Abogados, contadores y gestores. Diseño sobrio y elegante para transmitir confianza y
+                            autoridad.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <!-- Real Estate -->
+                <a href="demos/realestate/index.html" class="nicho-card fade-up">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Real Estate</h3>
+                        <p>Inmobiliarias y agentes. Experiencia visual inmersiva para destacar propiedades de lujo y
+                            proyectos.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <!-- Coaches -->
+                <a href="demos/coaches/index.html" class="nicho-card fade-up delay-1">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Coaches y Mentores</h3>
+                        <p>Marca personal y venta de infoproductos. Sitios enfocados en la conexión personal y
+                            transformación.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <!-- Marketing -->
+                <a href="demos/marketing/index.html" class="nicho-card fade-up delay-2">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Agencias de Marketing</h3>
+                        <p>Portafolio creativo ultra-dinámico para destacar campañas, métricas y casos de éxito.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <!-- Fitness -->
+                <a href="demos/fitness/index.html" class="nicho-card fade-up">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Fitness y Bienestar</h3>
+                        <p>Gimnasios, personal trainers y yoga. Diseño enérgico para motivar y facilitar la reserva de
+                            clases.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+                <!-- Educación -->
+                <a href="demos/educacion/index.html" class="nicho-card fade-up delay-1">
+                    <div class="nicho-img-wrapper">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="nicho-content">
+                        <h3>Educación Privada</h3>
+                        <p>Institutos y academias online. Interfaces claras y estructuradas para presentar programas de
+                            estudio.</p>
+                        <div class="nicho-action">Ver Demo <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; <span id="year"></span> InerciaDev. Todos los derechos reservados.</p>
+            <p class="footer-slogan">Impulsando el futuro con código.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYPE | Agencia de Marketing Creativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #050505;
+            --neon: #ccff00;
+            --pink: #ff00ff;
+            --text: #ffffff;
+            --gray: #1a1a1a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: default; }
+        body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+        /* Custom Cursor */
+        .cursor-glow {
+            width: 300px; height: 300px; background: radial-gradient(circle, rgba(204, 255, 0, 0.15) 0%, transparent 70%);
+            position: fixed; pointer-events: none; transform: translate(-50%, -50%); z-index: 0; transition: 0.1s ease-out;
+        }
+
+        /* Nav */
+        nav {
+            padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 10;
+        }
+        .logo { font-size: 2rem; font-weight: 800; color: var(--text); text-decoration: none; text-transform: uppercase; letter-spacing: -2px; }
+        .logo span { color: var(--neon); }
+        .menu-btn { color: var(--bg); background: var(--neon); padding: 10px 25px; border-radius: 50px; font-size: 1rem; text-decoration: none; font-weight: 600; transition: all 0.3s;}
+        .menu-btn:hover { background: var(--pink); color: white; transform: scale(1.05);}
+
+        /* Hero */
+        .hero { min-height: 85vh; display: flex; align-items: center; padding: 0 5%; position: relative; z-index: 1; }
+        .hero h1 { font-size: 8vw; line-height: 0.9; text-transform: uppercase; margin-bottom: 30px; letter-spacing: -3px; }
+        .text-outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); transition: 0.3s; }
+        .text-outline:hover { color: var(--pink); -webkit-text-stroke: 1px var(--pink); }
+        .hero-desc { font-size: 1.5rem; max-width: 600px; color: #aaa; margin-bottom: 50px; }
+
+        .btn-marquee {
+            display: inline-block; background: var(--neon); color: var(--bg); font-family: 'Syne', sans-serif;
+            font-size: 1.5rem; font-weight: 800; text-transform: uppercase; text-decoration: none;
+            padding: 20px 40px; border-radius: 100px; overflow: hidden; position: relative; transition: background 0.3s;
+        }
+        .btn-marquee:hover { background: var(--pink); color: white; }
+
+        /* Marquee */
+        .marquee-wrapper { width: 100%; overflow: hidden; white-space: nowrap; padding: 30px 0; border-top: 1px solid #333; border-bottom: 1px solid #333; margin-top: 50px; background: var(--gray); transform: rotate(-2deg); margin-bottom: 100px;}
+        .marquee { display: inline-block; animation: scroll 15s linear infinite; font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; text-transform: uppercase; color: var(--neon); }
+        .marquee span { margin: 0 30px; -webkit-text-stroke: 1px var(--neon); color: transparent; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Services */
+        .section-padding { padding: 100px 5%; position: relative; z-index: 1;}
+        .section-title { font-size: 4rem; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 60px; line-height: 1;}
+        .section-title span { color: var(--neon); }
+        
+        .services-list { border-top: 1px solid #333; }
+        .service-item { display: flex; justify-content: space-between; align-items: center; padding: 40px 0; border-bottom: 1px solid #333; transition: all 0.4s; position: relative; overflow: hidden;}
+        .service-item h3 { font-size: 3rem; text-transform: uppercase; transition: transform 0.4s; position: relative; z-index: 2;}
+        .service-item p { font-size: 1.2rem; color: #888; max-width: 400px; text-align: right; position: relative; z-index: 2;}
+        .service-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--neon); transform: scaleY(0); transform-origin: bottom; transition: transform 0.4s ease-out; z-index: 1;}
+        .service-item:hover .service-bg { transform: scaleY(1); }
+        .service-item:hover h3, .service-item:hover p { color: var(--bg); }
+        .service-item:hover h3 { transform: translateX(30px); }
+
+        /* Clients */
+        .clients { background: var(--gray); text-align: center; }
+        .clients-grid { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-top: 50px; opacity: 0.5;}
+        .clients-grid i { font-size: 4rem; transition: color 0.3s, opacity 0.3s; }
+        .clients-grid i:hover { color: var(--neon); opacity: 1; }
+
+        /* Footer CTA */
+        .footer-cta { text-align: center; padding: 150px 5%; border-top: 1px solid #333;}
+        .footer-cta h2 { font-size: 6vw; text-transform: uppercase; line-height: 0.9; margin-bottom: 40px;}
+        .footer-cta h2 span { color: transparent; -webkit-text-stroke: 1px var(--text); }
+        
+        .footer-bottom { display: flex; justify-content: space-between; padding: 30px 5%; border-top: 1px solid #333; font-size: 0.9rem; color: #666;}
+        .footer-social a { color: #fff; margin-left: 20px; text-decoration: none; text-transform: uppercase; font-weight: 600; font-family: 'Syne', sans-serif;}
+        .footer-social a:hover { color: var(--neon); }
+
+        /* Back Link */
+        .back-link {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .service-item { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .service-item p { text-align: left; }
+            .service-item h3 { font-size: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: center; }
+            .footer-social a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow" id="glow"></div>
+    <a href="../../ejemplos.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver a Ejemplos</a>
+
+    <nav>
+        <a href="#" class="logo">HY<span>PE</span>.</a>
+        <a href="#" class="menu-btn">Let's Talk</a>
+    </nav>
+
+    <section class="hero">
+        <div>
+            <h1>No hacemos ruido.<br><span class="text-outline">Hacemos historia.</span></h1>
+            <p class="hero-desc">Agencia creativa enfocada en disrupción digital, branding extremo y campañas que rompen el maldito algoritmo.</p>
+            <a href="#" class="btn-marquee">
+                <span>Start Project <i class="fa-solid fa-arrow-trend-up"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <div class="marquee-wrapper">
+        <div class="marquee">
+            Branding <span>•</span> Social Media <span>•</span> Growth <span>•</span> Ads <span>•</span> Content <span>•</span> Branding <span>•</span> Social Media <span>•</span> Growth <span>•</span> Ads <span>•</span> Content
+        </div>
+    </div>
+
+    <section class="section-padding">
+        <h2 class="section-title">Nuestras <span>Armas</span></h2>
+        <div class="services-list">
+            <div class="service-item">
+                <div class="service-bg"></div>
+                <h3>Brand Identity</h3>
+                <p>Construimos marcas magnéticas que las personas no solo consumen, sino que se tatúan.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-bg"></div>
+                <h3>Growth Hacking</h3>
+                <p>Estrategias agresivas basadas en datos para escalar tus ventas hasta donde el servidor aguante.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-bg"></div>
+                <h3>Social Content</h3>
+                <p>Contenido viral, crudo y real. Deja de subir flyers aburridos que nadie quiere ver.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-bg"></div>
+                <h3>Performance Ads</h3>
+                <p>Gestión de pauta publicitaria en Meta y Google con un ROI que le sacará una sonrisa a tu contador.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding clients">
+        <h2 class="section-title" style="font-size: 2.5rem;">Marcas que confiaron en la <span style="color:var(--pink);">locura</span></h2>
+        <div class="clients-grid">
+            <i class="fa-brands fa-spotify"></i>
+            <i class="fa-brands fa-airbnb"></i>
+            <i class="fa-brands fa-nike"></i>
+            <i class="fa-brands fa-redhat"></i>
+            <i class="fa-brands fa-twitch"></i>
+            <i class="fa-brands fa-discord"></i>
+        </div>
+    </section>
+
+    <footer class="footer-cta">
+        <h2>Deja de ser<br><span>invisible.</span></h2>
+        <a href="#" class="btn-marquee" style="margin-top: 40px;">
+            <span>Contacta con HYPE <i class="fa-solid fa-bolt"></i></span>
+        </a>
+    </footer>
+
+    <div class="footer-bottom">
+        <div>&copy; 2026 HYPE AGENCY. Demo por InerciaDev.</div>
+        <div class="footer-social">
+            <a href="#">Instagram</a>
+            <a href="#">Tiktok</a>
+            <a href="#">Behance</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            document.getElementById('glow').style.left = e.pageX + 'px';
+            document.getElementById('glow').style.top = e.pageY + 'px';
+        });
+    </script>
+</body>
+</html>

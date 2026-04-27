@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Silva | Coach de Vida & Negocios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2387;
+            --secondary: #e94057;
+            --accent: #f27121;
+            --text: #333;
+            --text-light: #666;
+            --bg-light: #fff5f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { color: var(--text); background: #fff; overflow-x: hidden; line-height: 1.6;}
+        h1, h2, h3 { font-family: 'Lora', serif; }
+
+        /* Navigation */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            position: absolute; width: 100%; z-index: 10;
+        }
+        .logo { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+        .social a { color: var(--text); font-size: 1.2rem; margin-left: 15px; transition: color 0.3s; }
+        .social a:hover { color: var(--secondary); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; padding: 0 5%;
+            background: linear-gradient(135deg, rgba(255,245,245,1) 0%, rgba(255,255,255,1) 100%); position: relative;
+        }
+        .hero-blob {
+            position: absolute; right: 0; top: 0; width: 50%; height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            clip-path: circle(60% at 80% 50%); z-index: 1; transition: clip-path 1s ease-in-out;
+        }
+        .hero-blob:hover { clip-path: circle(70% at 80% 50%); }
+        .hero-content { max-width: 500px; z-index: 2; margin-top: 50px;}
+        .hero-subtitle { color: var(--secondary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; color: #1a1a1a; font-weight: 800;}
+        .hero-content p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; line-height: 1.7; }
+        
+        .btn-gradient {
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none;
+            font-weight: 600; box-shadow: 0 10px 20px rgba(233, 64, 87, 0.3); transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+        .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(233, 64, 87, 0.4); }
+
+        /* About Section */
+        .section-padding { padding: 100px 5%; }
+        .about-section { display: flex; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .about-img { flex: 1; border-radius: 20px; overflow: hidden; position: relative; }
+        .about-img img { width: 100%; display: block; border-radius: 20px;}
+        .about-img::after { content: ''; position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: var(--bg-light); border-radius: 50%; z-index: -1; }
+        .about-text { flex: 1.2; }
+        .about-text h2 { font-size: 2.8rem; margin-bottom: 20px; color: var(--primary); }
+        .about-text p { margin-bottom: 20px; color: var(--text-light); font-size: 1.05rem;}
+        .signature { font-family: 'Lora', serif; font-size: 1.8rem; color: var(--secondary); font-style: italic; margin-top: 20px; display: block;}
+
+        /* Programs */
+        .programs-section { background: var(--bg-light); text-align: center; }
+        .section-title { font-size: 2.8rem; color: var(--primary); margin-bottom: 15px; }
+        .section-subtitle { color: var(--text-light); max-width: 600px; margin: 0 auto 60px; font-size: 1.1rem; }
+        .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .program-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.03); transition: transform 0.3s; position: relative; overflow: hidden;}
+        .program-card:hover { transform: translateY(-10px); }
+        .program-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(to right, var(--primary), var(--secondary)); }
+        .program-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; }
+        .program-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .program-card p { color: var(--text-light); margin-bottom: 25px; }
+        .program-card ul { list-style: none; text-align: left; margin-bottom: 30px; }
+        .program-card ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--text-light); font-size: 0.95rem;}
+        .program-card ul li i { font-size: 1rem; color: #2ecc71; margin-bottom: 0;}
+        .btn-outline { display: inline-block; padding: 12px 30px; border: 2px solid var(--secondary); color: var(--secondary); text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s; }
+        .btn-outline:hover { background: var(--secondary); color: white; }
+
+        /* Quote / Testimonials */
+        .quote-section { padding: 100px 5%; text-align: center; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+        .quote-section i { font-size: 3rem; opacity: 0.3; margin-bottom: 30px; }
+        .quote-text { font-family: 'Lora', serif; font-size: 2.2rem; font-style: italic; max-width: 900px; margin: 0 auto 30px; line-height: 1.4; }
+        .quote-author { font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* Footer */
+        footer { padding: 60px 5% 30px; background: white; border-top: 1px solid #f0f0f0;}
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 30px;}
+        .footer-logo { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+        .footer-links a { color: var(--text-light); text-decoration: none; margin: 0 15px; font-size: 0.95rem; transition: color 0.3s;}
+        .footer-links a:hover { color: var(--secondary); }
+        .footer-bottom { text-align: center; margin-top: 40px; color: #aaa; font-size: 0.85rem; }
+
+        /* Back Link */
+        .back-link {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8);
+            color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-section { flex-direction: column; text-align: center; }
+            .hero-content h1 { font-size: 3rem; }
+            .program-card ul li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../ejemplos.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver a Ejemplos</a>
+
+    <nav>
+        <a href="#" class="logo">Laura Silva.</a>
+        <ul class="nav-links">
+            <li><a href="#">Sobre mí</a></li>
+            <li><a href="#">Programas</a></li>
+            <li><a href="#">Testimonios</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+        <div class="social">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-blob"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">Transforma tu realidad</span>
+            <h1>Despierta tu máximo potencial.</h1>
+            <p>Te acompaño a romper barreras mentales, estructurar tus metas y construir el negocio y la vida que realmente deseas. Sin excusas, solo resultados comprobables.</p>
+            <a href="#" class="btn-gradient">Agenda tu Sesión 1:1</a>
+        </div>
+    </section>
+
+    <section class="section-padding about-section">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Laura Silva Coach">
+        </div>
+        <div class="about-text">
+            <h2>Mi misión es tu expansión.</h2>
+            <p>Hace 10 años, yo estaba exactamente donde tú estás hoy: sintiendo que tenía un potencial inmenso pero atrapada en el perfeccionismo, el miedo al qué dirán y la parálisis por análisis.</p>
+            <p>Tras certificarme internacionalmente en PNL, neurociencias y estrategia de negocios, desarrollé un método propio que integra el trabajo profundo de mentalidad con acciones tácticas para escalar emprendimientos.</p>
+            <p>Mi objetivo no es motivarte temporalmente; es darte las herramientas para que te conviertas en el CEO absoluto de tu vida y tus finanzas.</p>
+            <span class="signature">Laura Silva</span>
+        </div>
+    </section>
+
+    <section class="section-padding programs-section">
+        <h2 class="section-title">¿Cómo puedo ayudarte?</h2>
+        <p class="section-subtitle">Elige el camino que mejor se adapte a tu momento actual. Desde acompañamiento personalizado hasta programas grupales intensivos.</p>
+        
+        <div class="programs-grid">
+            <div class="program-card">
+                <i class="fa-solid fa-rocket"></i>
+                <h3>Despegue (Mentoring)</h3>
+                <p>Programa grupal de 8 semanas diseñado para lanzar tu marca personal al mercado con bases sólidas.</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 8 sesiones grupales en vivo</li>
+                    <li><i class="fa-solid fa-check"></i> Workbooks descargables</li>
+                    <li><i class="fa-solid fa-check"></i> Comunidad privada de apoyo</li>
+                </ul>
+                <a href="#" class="btn-outline">Ver Detalles</a>
+            </div>
+            <div class="program-card" style="transform: scale(1.05); border: 2px solid var(--secondary); box-shadow: 0 20px 40px rgba(233,64,87,0.1);">
+                <i class="fa-solid fa-gem"></i>
+                <h3>Elite 1:1 Coaching</h3>
+                <p>Acompañamiento privado de alto nivel durante 3 meses para escalar tu negocio a las 6 cifras.</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Sesiones 1:1 quincenales</li>
+                    <li><i class="fa-solid fa-check"></i> Soporte VIP por WhatsApp</li>
+                    <li><i class="fa-solid fa-check"></i> Auditoría completa de negocio</li>
+                </ul>
+                <a href="#" class="btn-gradient" style="padding: 12px 30px;">Aplicar Ahora</a>
+            </div>
+            <div class="program-card">
+                <i class="fa-solid fa-video"></i>
+                <h3>Mindset Masterclass</h3>
+                <p>Curso online grabado para reprogramar creencias limitantes en torno al dinero y el éxito.</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Acceso de por vida</li>
+                    <li><i class="fa-solid fa-check"></i> 15 módulos en video HD</li>
+                    <li><i class="fa-solid fa-check"></i> Ejercicios de PNL prácticos</li>
+                </ul>
+                <a href="#" class="btn-outline">Ver Detalles</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <i class="fa-solid fa-quote-left"></i>
+        <p class="quote-text">"Trabajar con Laura fue un antes y un después. No solo tripliqué la facturación de mi agencia en 4 meses, sino que por fin logré trabajar con paz mental y seguridad en mis decisiones."</p>
+        <p class="quote-author">— Sofía R., CEO y Fundadora</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <a href="#" class="footer-logo">Laura Silva.</a>
+            <div class="footer-links">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="social">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-spotify"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Laura Silva Coaching. Todos los derechos reservados. Landing de demostración por InerciaDev.</p>
+        </div>
+    </footer>
+</body>
+</html>

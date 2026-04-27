@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Vangard | Educación de Excelencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #00509e;
+            --accent: #FF9900;
+            --bg: #F5F7FA;
+            --text: #333333;
+            --light: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden;}
+        h1, h2, h3 { font-family: 'Merriweather', serif; color: var(--primary); }
+
+        /* Topbar & Nav */
+        .topbar { background: var(--primary); color: white; padding: 10px 5%; display: flex; justify-content: space-between; font-size: 0.85rem; }
+        .topbar a { color: white; text-decoration: none; margin-left: 15px; transition: color 0.3s; }
+        .topbar a:hover { color: var(--accent); }
+        
+        nav { background: white; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo i { font-size: 2.5rem; color: var(--primary); }
+        .logo-text h1 { font-size: 1.5rem; margin-bottom: 0; }
+        .logo-text p { font-size: 0.75rem; color: #666; letter-spacing: 2px; }
+        
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .btn-apply { background: var(--accent); color: white !important; padding: 10px 20px; border-radius: 4px; box-shadow: 0 4px 6px rgba(255, 153, 0, 0.2); transition: background 0.3s; }
+        .btn-apply:hover { background: #e68a00; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80') center/cover;
+            color: white; padding: 120px 5%; text-align: center;
+        }
+        .hero h1 { color: white; font-size: 3.5rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px; color: #e0e0e0;}
+        .hero-btns { display: flex; gap: 20px; justify-content: center; }
+        .btn-primary { background: var(--accent); color: white; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+        .btn-outline { border: 2px solid white; color: white; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+
+        /* Programs */
+        .section-padding { padding: 80px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 15px; }
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 50px; max-width: 600px; margin-inline: auto; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .card-img { height: 200px; background: #ddd; background-size: cover; background-position: center; position: relative;}
+        .level-badge { position: absolute; top: 15px; right: 15px; background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .card-body { padding: 25px; }
+        .card-body h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .card-body p { color: #666; margin-bottom: 20px; font-size: 0.95rem; }
+        .card-link { color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
+
+        /* Stats */
+        .stats-section { background: var(--secondary); color: white; padding: 60px 5%; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; max-width: 1200px; margin: 0 auto;}
+        .stat-item h4 { font-size: 3.5rem; color: var(--accent); margin-bottom: 10px; font-family: 'Open Sans', sans-serif;}
+        .stat-item p { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Facilities */
+        .facilities { background: white; }
+        .fac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .fac-content { padding: 80px 10%; display: flex; flex-direction: column; justify-content: center; }
+        .fac-img { background: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80') center/cover; min-height: 400px;}
+        .fac-list { list-style: none; margin-top: 30px; }
+        .fac-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; font-weight: 600; color: #444; }
+        .fac-list i { color: var(--accent); font-size: 1.2rem; }
+
+        @media (max-width: 768px) {
+            .fac-grid { grid-template-columns: 1fr; }
+            .fac-img { height: 300px; }
+        }
+
+        /* Admissions / CTA */
+        .admissions-cta { background: var(--bg); text-align: center; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;}
+        .admissions-cta .container { max-width: 800px; }
+
+        /* Footer */
+        footer { background: var(--primary); color: white; padding: 60px 5% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; margin-bottom: 40px;}
+        .footer-col h4 { color: white; font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: #ccc; text-decoration: none; margin-bottom: 10px; display: block; transition: color 0.3s;}
+        .footer-col a:hover { color: var(--accent); }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+        .social-icons a:hover { background: var(--accent); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.9rem;}
+
+        .back-link {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(0,51,102,0.9);
+            color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; z-index: 1000; font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <a href="../../ejemplos.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver a Ejemplos</a>
+
+    <div class="topbar">
+        <span><i class="fa-solid fa-phone"></i> (011) 4567-8900 | info@institutovangard.edu.ar</span>
+        <div>
+            <a href="#">Portal Alumnos</a>
+            <a href="#">Intranet Docente</a>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-building-columns"></i>
+            <div class="logo-text">
+                <h1>Instituto Vangard</h1>
+                <p>TRADICIÓN & FUTURO</p>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">Institucional</a></li>
+            <li><a href="#">Niveles</a></li>
+            <li><a href="#">Campus</a></li>
+            <li><a href="#">Admisiones</a></li>
+            <li><a href="#" class="btn-apply">Inscripción Abierta</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Formando a los líderes del mañana</h1>
+        <p>Educación bilingüe integral desde nivel inicial hasta secundario. Fomentamos el pensamiento crítico, los valores y la innovación para un mundo globalizado.</p>
+        <div class="hero-btns">
+            <a href="#" class="btn-primary">Proceso de Admisión</a>
+            <a href="#" class="btn-outline">Visita Virtual</a>
+        </div>
+    </header>
+
+    <section class="section-padding container">
+        <h2 class="section-title">Nuestra Propuesta Educativa</h2>
+        <p class="section-subtitle">Un proyecto académico que acompaña a tus hijos en cada etapa de su desarrollo, con estándares internacionales.</p>
+        
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1587691592099-24045742c181?auto=format&fit=crop&q=80')">
+                    <span class="level-badge">De 2 a 5 años</span>
+                </div>
+                <div class="card-body">
+                    <h3>Nivel Inicial</h3>
+                    <p>Un espacio seguro y estimulante donde los más pequeños desarrollan sus habilidades cognitivas y sociales a través del juego y la exploración.</p>
+                    <a href="#" class="card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80')">
+                    <span class="level-badge">De 6 a 11 años</span>
+                </div>
+                <div class="card-body">
+                    <h3>Nivel Primario</h3>
+                    <p>Sólida formación académica bilingüe que fomenta la curiosidad, el respeto y la autonomía en el proceso de aprendizaje guiado.</p>
+                    <a href="#" class="card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80')">
+                    <span class="level-badge">De 12 a 17 años</span>
+                </div>
+                <div class="card-body">
+                    <h3>Nivel Secundario</h3>
+                    <p>Preparación preuniversitaria de excelencia con certificaciones de Cambridge y enfoque en ciencias, artes y programación.</p>
+                    <a href="#" class="card-link">Saber más <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h4>35+</h4>
+                <p>Años de Trayectoria</p>
+            </div>
+            <div class="stat-item">
+                <h4>100%</h4>
+                <p>Educación Bilingüe</p>
+            </div>
+            <div class="stat-item">
+                <h4>120</h4>
+                <p>Docentes Especializados</p>
+            </div>
+            <div class="stat-item">
+                <h4>15</h4>
+                <p>Certificaciones Intl.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="facilities">
+        <div class="fac-grid">
+            <div class="fac-img"></div>
+            <div class="fac-content">
+                <h2 class="section-title" style="text-align: left;">Un Campus de Primer Nivel</h2>
+                <p style="color: #666; font-size: 1.1rem; margin-bottom: 20px;">Nuestras instalaciones están diseñadas para inspirar y potenciar el aprendizaje continuo, combinando tecnología de vanguardia con amplios espacios verdes.</p>
+                <ul class="fac-list">
+                    <li><i class="fa-solid fa-check-circle"></i> Laboratorios de Ciencias y Robótica</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Aulas interactivas climatizadas</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Campo de deportes de 5 hectáreas</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Biblioteca bilingüe multimedial</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Comedor con menú nutricional</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding admissions-cta">
+        <div class="container">
+            <h2 class="section-title">¿Listo para ser parte de Vangard?</h2>
+            <p class="section-subtitle" style="margin-bottom: 30px;">El proceso de admisión para el próximo ciclo lectivo ya se encuentra abierto. Te invitamos a conocer nuestra propuesta.</p>
+            <a href="#" class="btn-primary" style="display: inline-block;">Solicitar Entrevista de Admisión</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-building-columns" style="color: white; font-size: 2rem;"></i>
+                    <h2 style="color: white; font-size: 1.2rem; font-family: 'Merriweather', serif;">Instituto Vangard</h2>
+                </div>
+                <p>Educación con propósito. Formando ciudadanos del mundo con valores, conocimiento e innovación.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <a href="#">Proyecto Institucional</a>
+                <a href="#">Autoridades</a>
+                <a href="#">Calendario Académico</a>
+                <a href="#">Trabajá con nosotros</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p><i class="fa-solid fa-location-dot" style="margin-right: 10px; color: var(--accent);"></i> Av. Libertador 4500, CABA</p>
+                <p><i class="fa-solid fa-phone" style="margin-right: 10px; color: var(--accent);"></i> (011) 4567-8900</p>
+                <p><i class="fa-solid fa-envelope" style="margin-right: 10px; color: var(--accent);"></i> admisiones@vangard.edu.ar</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Instituto Vangard. Todos los derechos reservados. Desarrollo por InerciaDev.</p>
+        </div>
+    </footer>
+</body>
+</html>
