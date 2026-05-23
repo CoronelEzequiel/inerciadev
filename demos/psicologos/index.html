@@ -19,7 +19,7 @@
             --shadow-glow: 0 0 20px rgba(95, 133, 108, 0.15);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg-dark); color: var(--text-light); line-height: 1.6; overflow-x: hidden;}
+        html, body { background: var(--bg-dark); color: var(--text-light); line-height: 1.6; overflow-x: hidden; width: 100%; position: relative; }
         h1, h2, h3, h4 { font-family: 'Lora', serif; font-weight: 400; color: var(--text-light); }
 
         /* Navigation */
@@ -155,8 +155,9 @@
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: 0;
                 width: 80%;
+                max-width: 300px;
                 height: 100vh;
                 background: rgba(15, 21, 17, 0.98);
                 backdrop-filter: blur(25px);
@@ -165,14 +166,17 @@
                 justify-content: center;
                 align-items: center;
                 gap: 35px;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transform: translateX(100%);
+                visibility: hidden; /* Prevent horizontal layout leakage */
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
                 box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
                 z-index: 105;
                 padding: 40px 20px;
                 border-left: 1px solid rgba(255, 255, 255, 0.05);
             }
             .nav-links.active {
-                right: 0;
+                transform: translateX(0);
+                visibility: visible;
             }
             .nav-links a {
                 font-size: 1.2rem;
