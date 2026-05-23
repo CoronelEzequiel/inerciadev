@@ -120,6 +120,85 @@
         footer { background: #0b0f0c; color: var(--text-muted); text-align: center; padding: 40px 5%; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.03); }
         footer p { margin-bottom: 10px; }
 
+        /* About Therapist Section Styles */
+        .about-therapist-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-lead {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-family: 'Lora', serif;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .about-therapist-content p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        .credentials-box {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(216, 194, 157, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+        .credentials-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .credentials-list {
+            list-style: none;
+        }
+        .credentials-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        .credentials-list li:last-child {
+            margin-bottom: 0;
+        }
+        .credentials-list i {
+            color: var(--sage);
+            font-size: 1rem;
+        }
+        .about-therapist-portrait {
+            border: 1px solid rgba(216, 194, 157, 0.2);
+            padding: 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: var(--shadow-glow);
+        }
+        .about-therapist-portrait img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            filter: grayscale(10%);
+        }
+        
+        @media (max-width: 992px) {
+            .about-therapist-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-therapist-img-wrapper {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
         /* Back Link */
         .back-link {
             position: fixed; bottom: 20px; left: 20px; background: rgba(22, 32, 26, 0.9); border: 1px solid var(--sage);
@@ -254,8 +333,9 @@
         <a href="#" class="logo"><i class="fa-solid fa-seedling"></i> Clear<span>Mind</span></a>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Specialties</a></li>
-            <li><a href="#">My Approach</a></li>
+            <li><a href="#sobre-mi">About Me</a></li>
+            <li><a href="#especialidades">Specialties</a></li>
+            <li><a href="#enfoque">My Approach</a></li>
             <li><a href="#contacto" class="btn-nav">Book Session</a></li>
         </ul>
         <button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">
@@ -281,7 +361,7 @@
     </section>
 
     <!-- Specialties Section -->
-    <section class="section-padding container">
+    <section class="section-padding container" id="especialidades">
         <div class="section-header">
             <span>Areas of Support</span>
             <h2>Therapeutic Specialties</h2>
@@ -305,8 +385,35 @@
         </div>
     </section>
 
+    <!-- About Section / Presentación -->
+    <section class="section-padding container" id="sobre-mi">
+        <div class="about-therapist-grid">
+            <div class="about-therapist-content">
+                <span class="section-header" style="text-align: left; margin-bottom: 15px; display: block;"><span style="margin-bottom:0;">The Professional</span></span>
+                <h2 style="font-family: 'Lora', serif; font-size: 2.8rem; margin-bottom: 25px;">Lic. Sofía Mendoza</h2>
+                <p class="about-lead">I deeply believe in the transformative power of a therapeutic space built on warmth, clinical safety, and absolute respect for your unique story.</p>
+                <p>Throughout my academic and clinical path, I have focused my practice on providing concrete, empirically validated tools to help my patients understand their suffering, break cycles of anxiety, and regain the leading role in their lives.</p>
+                
+                <div class="credentials-box">
+                    <h4>Credentials & Experience</h4>
+                    <ul class="credentials-list">
+                        <li><i class="fa-solid fa-graduation-cap"></i> Degree in Psychology (UBA) - License No. 48,921</li>
+                        <li><i class="fa-solid fa-certificate"></i> Specialization in Cognitive-Behavioral Psychotherapy (CBT)</li>
+                        <li><i class="fa-solid fa-clock-rotate-left"></i> Over 8 years of clinical consultation experience</li>
+                        <li><i class="fa-solid fa-users"></i> Member of the Buenos Aires Clinical Psychology Association</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-therapist-img-wrapper">
+                <div class="about-therapist-portrait">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Lic. Sofía Mendoza">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Approach Section -->
-    <section class="section-padding approach">
+    <section class="section-padding approach" id="enfoque">
         <div class="container approach-grid">
             <div class="approach-img">
                 <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?auto=format&fit=crop&q=80" alt="Cozy Therapy Space">
