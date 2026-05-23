@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Properties | LuxEstates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark: #111;
+            --darker: #0a0a0a;
+            --light: #fff;
+            --accent: #CBA153; /* Gold */
+            --gray: #888;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--dark); color: var(--light); overflow-x: hidden; }
+
+        /* Navbar */
+        nav { position: absolute; width: 100%; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .logo { font-size: 1.2rem; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; color: var(--light); text-decoration: none; }
+        .logo strong { font-weight: 600; color: var(--accent); }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { color: var(--light); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .menu-btn { display: none; background: none; border: none; color: var(--light); font-size: 1.5rem; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-btn { display: block; }
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80') center/cover;
+            display: flex; align-items: center; padding: 0 10%; position: relative;
+        }
+        .hero-text { max-width: 700px; }
+        .hero-text h1 { font-size: 4.5rem; font-weight: 200; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text p { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; color: #ccc; margin-bottom: 40px; }
+        .btn-outline { display: inline-block; padding: 15px 40px; border: 1px solid var(--accent); color: var(--light); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; transition: all 0.3s; }
+        .btn-outline:hover { background: var(--accent); color: var(--dark); }
+        .scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--light); font-size: 2rem; animation: bounce 2s infinite; }
+        
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-20px) translateX(-50%); } 60% { transform: translateY(-10px) translateX(-50%); } }
+
+        /* General Sections */
+        .section-padding { padding: 100px 5%; }
+        .bg-darker { background: var(--darker); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-weight: 300; font-size: 2.5rem; letter-spacing: 3px; }
+        .section-header span { color: var(--accent); font-size: 0.9rem; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 10px;}
+
+        /* Properties */
+        .property-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .prop-card { background: #111; overflow: hidden; position: relative; cursor: pointer; }
+        .prop-img { width: 100%; height: 450px; object-fit: cover; transition: transform 0.7s ease; opacity: 0.8; }
+        .prop-card:hover .prop-img { transform: scale(1.05); opacity: 1; }
+        
+        .prop-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); }
+        .prop-price { color: var(--accent); font-size: 1.2rem; font-weight: 600; margin-bottom: 5px; }
+        .prop-title { font-size: 1.5rem; font-weight: 300; margin-bottom: 10px; }
+        .prop-meta { display: flex; gap: 15px; font-size: 0.85rem; color: #ccc; }
+        .prop-meta span { display: flex; align-items: center; gap: 5px; }
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .service-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; font-weight: 200; }
+        .service-card h3 { font-weight: 400; font-size: 1.2rem; letter-spacing: 1px; margin-bottom: 15px; }
+        .service-card p { color: var(--gray); font-size: 0.9rem; font-weight: 300; line-height: 1.8; }
+
+        /* Agents */
+        .agents-grid { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+        .agent-card { text-align: center; max-width: 300px; }
+        .agent-img { width: 250px; height: 350px; object-fit: cover; margin-bottom: 20px; filter: grayscale(100%); transition: filter 0.4s; }
+        .agent-card:hover .agent-img { filter: grayscale(0%); }
+        .agent-card h3 { font-weight: 400; letter-spacing: 2px; margin-bottom: 5px; }
+        .agent-card p { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .agent-contact { display: flex; justify-content: center; gap: 15px; }
+        .agent-contact a { color: var(--light); transition: color 0.3s; }
+        .agent-contact a:hover { color: var(--accent); }
+
+        /* Newsletter */
+        .newsletter { background: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80') center/cover; padding: 100px 5%; text-align: center; position: relative;}
+        .newsletter::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); }
+        .nl-content { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; }
+        .nl-content h2 { font-weight: 300; font-size: 2rem; letter-spacing: 2px; margin-bottom: 20px; }
+        .nl-form { display: flex; margin-top: 30px; }
+        .nl-input { flex: 1; padding: 15px 20px; background: transparent; border: 1px solid var(--gray); color: var(--light); font-family: 'Montserrat', sans-serif; outline: none; }
+        .nl-btn { background: var(--accent); color: var(--dark); border: none; padding: 0 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background 0.3s;}
+        .nl-btn:hover { background: #E5B869; }
+
+        /* Footer */
+        footer { background: var(--darker); padding: 60px 5% 20px; border-top: 1px solid #222; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; margin-bottom: 40px;}
+        .footer-logo { font-size: 1.5rem; letter-spacing: 3px; margin-bottom: 20px; display: inline-block;}
+        .footer-col h4 { font-weight: 500; letter-spacing: 1px; margin-bottom: 20px; color: var(--light); }
+        .footer-col p, .footer-col a { color: var(--gray); text-decoration: none; font-size: 0.9rem; margin-bottom: 10px; display: block; transition: color 0.3s;}
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { text-align: center; color: #555; font-size: 0.8rem; padding-top: 20px; border-top: 1px solid #222; }
+
+        /* Back Link */
+        .back-link {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nl-form { flex-direction: column; gap: 10px; }
+            .nl-btn { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../ejemplos-en.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Prototypes</a>
+
+    <nav>
+        <a href="#" class="logo">LUX<strong>ESTATES</strong></a>
+        <ul class="nav-links">
+            <li><a href="#">Collection</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Agents</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <button class="menu-btn"><i class="fa-solid fa-bars-staggered"></i></button>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Find your perfect sanctuary.</h1>
+            <p>Exclusive selection of luxury residences and investment properties in the most sought-after locations globally.</p>
+            <a href="#" class="btn-outline">Explore Collection</a>
+        </div>
+        <i class="fa-solid fa-angle-down scroll-down"></i>
+    </header>
+
+    <section class="section-padding bg-darker">
+        <div class="section-header">
+            <span>Premium Portfolio</span>
+            <h2>Featured Properties</h2>
+        </div>
+        <div class="property-grid">
+            <div class="prop-card">
+                <img src="https://images.unsplash.com/photo-1613490908592-fd5e43f5e130?auto=format&fit=crop&q=80" alt="Villa" class="prop-img">
+                <div class="prop-info">
+                    <div class="prop-price">USD 2,450,000</div>
+                    <div class="prop-title">Modern Coastal Villa</div>
+                    <div class="prop-meta">
+                        <span><i class="fa-solid fa-bed"></i> 4</span>
+                        <span><i class="fa-solid fa-bath"></i> 5</span>
+                        <span><i class="fa-solid fa-maximize"></i> 450 m²</span>
+                    </div>
+                </div>
+            </div>
+            <div class="prop-card">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80" alt="Penthouse" class="prop-img">
+                <div class="prop-info">
+                    <div class="prop-price">USD 1,800,000</div>
+                    <div class="prop-title">Skyline Penthouse</div>
+                    <div class="prop-meta">
+                        <span><i class="fa-solid fa-bed"></i> 3</span>
+                        <span><i class="fa-solid fa-bath"></i> 3</span>
+                        <span><i class="fa-solid fa-maximize"></i> 280 m²</span>
+                    </div>
+                </div>
+            </div>
+            <div class="prop-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" alt="Mansion" class="prop-img">
+                <div class="prop-info">
+                    <div class="prop-price">USD 4,200,000</div>
+                    <div class="prop-title">El Golf Private Residence</div>
+                    <div class="prop-meta">
+                        <span><i class="fa-solid fa-bed"></i> 6</span>
+                        <span><i class="fa-solid fa-bath"></i> 7</span>
+                        <span><i class="fa-solid fa-maximize"></i> 850 m²</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="#" class="btn-outline">View All Properties</a>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="section-header">
+            <span>Beyond the Purchase</span>
+            <h2>Exclusive Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-key"></i>
+                <h3>Concierge Service</h3>
+                <p>We take care of every detail of your move and relocation. From interior design to specialist domestic staff management.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-file-contract"></i>
+                <h3>Legal & Tax Counsel</h3>
+                <p>Comprehensive support with expert Real Estate attorneys to guarantee secure transactions and international tax optimization.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Investment Management</h3>
+                <p>Market analysis, precise valuations, and real estate portfolio management to maximize the return on your capital.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-darker">
+        <div class="section-header">
+            <span>Expert Advisory</span>
+            <h2>Our Agents</h2>
+        </div>
+        <div class="agents-grid">
+            <div class="agent-card">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80" alt="Agent 1" class="agent-img">
+                <h3>Alexander Pierce</h3>
+                <p>Senior Broker</p>
+                <div class="agent-contact">
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="agent-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Agent 2" class="agent-img">
+                <h3>Victoria Sterling</h3>
+                <p>Sales Director</p>
+                <div class="agent-contact">
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="agent-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80" alt="Agent 3" class="agent-img">
+                <h3>James Rothschild</h3>
+                <p>Investment Specialist</p>
+                <div class="agent-contact">
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="nl-content">
+            <h2>Private Access</h2>
+            <p style="color: #ccc; font-weight: 300;">Subscribe to receive "Off-Market" properties before they hit the public market.</p>
+            <form class="nl-form">
+                <input type="email" class="nl-input" placeholder="Your email address" required>
+                <button type="submit" class="nl-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col" style="flex: 2;">
+                <a href="#" class="logo footer-logo">LUX<strong>ESTATES</strong></a>
+                <p style="max-width: 300px;">Redefining the standard of the luxury real estate market through exclusivity, discretion, and impeccable results.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Offices</h4>
+                <p>New York, NY</p>
+                <p>Miami, FL</p>
+                <p>London, UK</p>
+                <p>Dubai, UAE</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:info@luxestates.com">info@luxestates.com</a>
+                <a href="tel:+18001234567">+1 800 123 4567</a>
+                <div style="margin-top: 20px; display: flex; gap: 15px;">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Lux Estates International. All rights reserved. Demo landing page by InerciaDev.</p>
+        </div>
+    </footer>
+</body>
+</html>

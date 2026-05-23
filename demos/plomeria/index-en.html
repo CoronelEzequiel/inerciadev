@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Service | Plumbing & Gas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #003d82;
+            --accent: #ff4757;
+            --bg: #f8f9fa;
+            --text: #2f3542;
+            --light: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden;}
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .emergency-badge {
+            background: var(--accent); color: white; padding: 8px 15px; border-radius: 50px; font-weight: bold; font-size: 0.9rem;
+            animation: pulse 2s infinite; display: flex; align-items: center; gap: 5px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white; padding: 100px 5%; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50px;
+            background: var(--bg); clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.1; }
+        .hero p { font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-inline: auto; opacity: 0.9; }
+        
+        .cta-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--accent); color: white; padding: 20px 40px; border-radius: 50px; font-size: 1.5rem;
+            font-weight: bold; text-decoration: none; box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4); transition: transform 0.3s;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+
+        .section-padding { padding: 80px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; text-align: center; font-weight: 900;}
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 50px; }
+
+        /* Services */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card {
+            background: white; padding: 40px 30px; border-radius: 20px; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; border-bottom: 4px solid transparent;
+        }
+        .card:hover { transform: translateY(-10px); border-bottom-color: var(--primary); }
+        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--secondary); }
+
+        /* Guarantee / Coverage */
+        .info-section { background: white; padding: 60px 0; margin-top: 40px;}
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .info-box { padding: 40px; background: var(--bg); border-radius: 20px; border-left: 5px solid #2ed573; }
+        .info-box h3 { color: var(--secondary); margin-bottom: 15px; font-size: 1.8rem; }
+        .info-box ul { list-style: none; margin-top: 20px; }
+        .info-box ul li { margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .info-box ul li i { color: #2ed573; }
+
+        /* Testimonials */
+        .testimonials { background: var(--primary); color: white; }
+        .testimonials .section-title { color: white; }
+        .testimonials .section-subtitle { color: #ccc; }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .test-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(5px); }
+        .stars { color: #f1c40f; margin-bottom: 15px; }
+        .test-text { font-style: italic; margin-bottom: 20px; line-height: 1.8; }
+        .test-author { font-weight: bold; }
+
+        /* Contact Form */
+        .contact-section { background: white; }
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: var(--bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .contact-info { background: var(--secondary); color: white; padding: 50px; }
+        .contact-info h3 { font-size: 2rem; margin-bottom: 20px; }
+        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; font-size: 1.1rem; }
+        .contact-item i { font-size: 1.5rem; color: var(--accent); }
+        .contact-form { padding: 50px; }
+        .form-group { margin-bottom: 20px; }
+        .form-control { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 1rem;}
+        .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 30px; width: 100%; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        .btn-submit:hover { background: var(--secondary); }
+
+        /* Footer */
+        footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 5%; font-size: 0.9rem; }
+
+        /* Back Link */
+        .back-link {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8); color: white;
+            padding: 10px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid, .contact-wrapper { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .contact-info, .contact-form { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../ejemplos-en.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Prototypes</a>
+
+    <header>
+        <a href="#" class="logo"><i class="fa-solid fa-droplet"></i> Emergency24</a>
+        <div class="emergency-badge"><i class="fa-solid fa-bolt"></i> Immediate Attention</div>
+    </header>
+
+    <section class="hero">
+        <h1>Gas leak or broken pipe? <br>We arrive in 30 mins.</h1>
+        <p>24/7 certified technical service. Plumbing, drain cleaning, and gas. Guaranteed work with fast response at your home.</p>
+        <a href="tel:08001234567" class="cta-btn"><i class="fa-solid fa-phone"></i> Call Now</a>
+    </section>
+
+    <section class="section-padding container">
+        <h2 class="section-title">Specialized Services</h2>
+        <p class="section-subtitle">Quick and permanent solutions for your home or business.</p>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-wrench"></i>
+                <h3>General Plumbing</h3>
+                <p>Leak repairs, faucet replacements, and moisture solutions. Clean and neat work.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-fire-flame-simple"></i>
+                <h3>Certified Gas Services</h3>
+                <p>Installation and repair of heaters, stoves, and water heaters. Leak detection with precision tools.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-sink"></i>
+                <h3>Drain Cleaning</h3>
+                <p>Use of electromechanical machines for drains, sewers, and sinks. Immediate service without breaking.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container info-grid">
+            <div class="info-box">
+                <h3><i class="fa-solid fa-shield-check" style="color:#2ed573; margin-right: 10px;"></i> Written Warranty</h3>
+                <p>We have highly qualified and certified staff. Free estimates and 6-month written warranty on all our repair and installation work.</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Certified Technicians</li>
+                    <li><i class="fa-solid fa-check"></i> Commercial & Residential Invoicing</li>
+                    <li><i class="fa-solid fa-check"></i> State-of-the-Art Tools</li>
+                </ul>
+            </div>
+            <div class="info-box" style="border-left-color: var(--accent);">
+                <h3 style="color: var(--accent);"><i class="fa-solid fa-map-location-dot" style="margin-right: 10px;"></i> Coverage Areas</h3>
+                <p>We have strategically distributed service vans to guarantee our arrival in less than 30 minutes for emergencies.</p>
+                <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <li><i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Capital Federal</li>
+                    <li><i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Zona Norte</li>
+                    <li><i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Zona Sur</li>
+                    <li><i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Zona Oeste</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding testimonials">
+        <div class="container">
+            <h2 class="section-title">What our clients say</h2>
+            <p class="section-subtitle">Your peace of mind is our best advertisement.</p>
+            <div class="test-grid">
+                <div class="test-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="test-text">"I had a gas leak at 2 AM on a Sunday. I called and they were here in 25 minutes. They solved the problem quickly and charged the agreed price. Excellent."</p>
+                    <p class="test-author">- Martín G. (Caballito)</p>
+                </div>
+                <div class="test-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <p class="test-text">"I called for a clogged kitchen drain that no other plumber could clear. They brought a special machine and solved it in 10 minutes. Very clean."</p>
+                    <p class="test-author">- Laura V. (Belgrano)</p>
+                </div>
+                <div class="test-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="test-text">"They installed all appliances in my new home (water heater, stove, space heaters). Super neat, they explain everything and give you the official gas certificate. 100% recommended."</p>
+                    <p class="test-author">- Carlos F. (Olivos)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding contact-section">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h3>Quick Contact</h3>
+                <p style="margin-bottom: 30px; opacity: 0.9;">Not an emergency? Leave us your inquiry and we will reply shortly with an estimated quote.</p>
+                <div class="contact-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div>
+                        <strong>Emergency WhatsApp</strong><br>
+                        +54 9 11 1234-5678
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Landline (24h Customer Care)</strong><br>
+                        0800-123-4567
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Project Quotes</strong><br>
+                        info@urgencias24.com
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--secondary);">Request a Quote</h3>
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="">What service do you need?</option>
+                            <option value="plomeria">Plumbing</option>
+                            <option value="gas">Certified Gas Service</option>
+                            <option value="destapacion">Drain Cleaning</option>
+                            <option value="otro">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" placeholder="Briefly describe the problem..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Emergency24 - Plumbing & Gas. All rights reserved. Demo landing page by InerciaDev.</p>
+    </footer>
+</body>
+</html>

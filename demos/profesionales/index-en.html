@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Firm & Accounting Studio | Lex & Associates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A1128;
+            --gold: #D4AF37;
+            --bg: #FDFDFD;
+            --text: #333333;
+            --light: #F4F4F6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden;}
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        
+        /* Header */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { 
+            font-family: 'Playfair Display', serif; font-size: 1.8rem; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .logo i { color: var(--gold); }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center;}
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;}
+        .nav-links a:hover { color: var(--gold); }
+        .btn-header { border: 1px solid var(--gold); padding: 8px 20px; }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.8)), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 5%;
+        }
+        .hero-content { max-width: 800px; }
+        .hero h1 { font-size: 4rem; margin-bottom: 20px; font-weight: 400; }
+        .hero p { font-size: 1.2rem; font-weight: 300; margin-bottom: 40px; color: #E0E0E0; }
+        .btn-gold {
+            background: var(--gold); color: var(--primary); padding: 15px 35px; text-decoration: none; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; transition: background 0.3s; display: inline-block;
+        }
+        .btn-gold:hover { background: #F3CA40; }
+
+        /* Pillars */
+        .pillars { display: flex; max-width: 1200px; margin: -50px auto 80px; position: relative; z-index: 10; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .pillar { flex: 1; background: white; padding: 40px; text-align: center; border-right: 1px solid var(--light); transition: transform 0.3s;}
+        .pillar:hover { transform: translateY(-10px); }
+        .pillar:last-child { border-right: none; }
+        .pillar i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        .pillar h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; }
+        .pillar p { font-size: 0.95rem; color: #666; }
+
+        .section-padding { padding: 80px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; text-align: center; font-weight: 600;}
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 50px; font-size: 1.1rem; max-width: 700px; margin-inline: auto;}
+
+        /* About Section */
+        .about { background: var(--light); display: flex; gap: 50px; align-items: center; justify-content: center; }
+        .about-text { flex: 1; max-width: 500px; }
+        .about-text h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; text-align: left;}
+        .about-text p { margin-bottom: 20px; color: #555; }
+        .about-img { flex: 1; background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80') center/cover; height: 500px; border-radius: 4px;}
+
+        /* Casos de exito / Numbers */
+        .stats { background: var(--primary); color: white; padding: 60px 5%; }
+        .stats-grid { display: flex; justify-content: space-around; max-width: 1000px; margin: 0 auto; text-align: center;}
+        .stats-grid h4 { font-size: 3rem; color: var(--gold); margin-bottom: 5px; }
+        .stats-grid p { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 300; opacity: 0.8;}
+
+        /* Equipo */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .team-card { text-align: center; }
+        .team-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--gold); padding: 5px;}
+        .team-card h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 5px; }
+        .team-card p { color: var(--gold); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px;}
+        .team-card .bio { color: #666; font-size: 0.9rem; }
+
+        /* Contacto */
+        .contact { background: var(--light); }
+        .contact-wrapper { display: flex; gap: 50px; max-width: 1000px; margin: 0 auto; background: white; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
+        .contact-info { flex: 1; }
+        .contact-info h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
+        .info-line { display: flex; gap: 15px; margin-bottom: 20px; color: #555;}
+        .info-line i { color: var(--gold); font-size: 1.2rem; }
+        .contact-form { flex: 1.5; }
+        .form-group { margin-bottom: 20px; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 2px; font-family: 'Roboto', sans-serif;}
+        textarea.form-control { resize: vertical; }
+
+        /* Footer */
+        footer { background: #050813; color: #888; text-align: center; padding: 30px 5%; font-size: 0.9rem; border-top: 1px solid #1a223a;}
+
+        .back-link {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8); color: white; padding: 10px 20px;
+            border-radius: 30px; text-decoration: none; font-size: 0.9rem; z-index: 1000; font-family: sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .pillars { flex-direction: column; margin-top: 0; }
+            .pillar { border-right: none; border-bottom: 1px solid var(--light); }
+            .about, .contact-wrapper { flex-direction: column; }
+            .stats-grid { flex-direction: column; gap: 40px; }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .about-img { height: 300px; width: 100%; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../ejemplos-en.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Prototypes</a>
+
+    <header>
+        <a href="#" class="logo"><i class="fa-solid fa-scale-balanced"></i> LEX & ASSOCIATES</a>
+        <ul class="nav-links">
+            <li><a href="#">The Firm</a></li>
+            <li><a href="#">Practice Areas</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#" class="btn-header">Contact</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Excellence & Legal Commitment</h1>
+            <p>Over 20 years providing top-tier legal and accounting counsel to businesses and individuals, with integrity and proven results.</p>
+            <a href="#" class="btn-gold">Consult Now</a>
+        </div>
+    </section>
+
+    <div class="pillars">
+        <div class="pillar">
+            <i class="fa-solid fa-gavel"></i>
+            <h3>Civil & Criminal Law</h3>
+            <p>We protect your family and assets interests with utmost discretion and procedural efficiency.</p>
+        </div>
+        <div class="pillar">
+            <i class="fa-solid fa-building"></i>
+            <h3>Corporate Law</h3>
+            <p>Business structuring, mergers, acquisitions, commercial contracts, and compliance for your company.</p>
+        </div>
+        <div class="pillar">
+            <i class="fa-solid fa-calculator"></i>
+            <h3>Tax & Accounting</h3>
+            <p>Tax planning, auditing, tax filing, and dispute resolution with tax authorities.</p>
+        </div>
+    </div>
+
+    <section class="section-padding about">
+        <div class="container about-text">
+            <h2>A track record that inspires trust.</h2>
+            <p>At Lex & Associates, we understand that every case is unique. Our multidisciplinary team of attorneys and accountants works in an integrated manner to offer complete solutions to complex problems.</p>
+            <p>We are distinguished by personalized attention, technical rigor, and a constant pursuit of professional excellence in defending our clients' rights. We act with absolute transparency at every stage.</p>
+            <a href="#" style="color: var(--gold); text-decoration: none; font-weight: bold; border-bottom: 1px solid var(--gold); padding-bottom: 2px;">Learn our story <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="about-img"></div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h4>20+</h4>
+                <p>Years of Experience</p>
+            </div>
+            <div class="stat-item">
+                <h4>95%</h4>
+                <p>Favorable Cases</p>
+            </div>
+            <div class="stat-item">
+                <h4>500+</h4>
+                <p>Advised Companies</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Founding Partners</h2>
+            <p class="section-subtitle">Professionals with a distinguished academic and practical track record in the country's most demanding courts.</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80" alt="Dr. Roberto" class="team-img">
+                    <h3>Dr. Roberto Lex</h3>
+                    <p>Managing Partner - Corporate Law</p>
+                    <p class="bio">Specialist in mergers and acquisitions with over 25 years advising Fortune 500 companies.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Dra. Mariana" class="team-img">
+                    <h3>Dra. Mariana Costa</h3>
+                    <p>Partner - Civil & Family Law</p>
+                    <p class="bio">Renowned litigator in civil courts, with postgraduate studies in mediation and conflict resolution.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80" alt="Cdr. Fernando" class="team-img">
+                    <h3>Cdr. Fernando Ruiz</h3>
+                    <p>Partner - Tax Affairs</p>
+                    <p class="bio">Former tax auditor, specialist in tax engineering and defense before tax collection agencies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding contact">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h3>Schedule a consultation</h3>
+                <p style="margin-bottom: 30px; color: #666;">We provide personalized attention at our offices or via secure video conference.</p>
+                <div class="info-line">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Central Offices</strong><br>
+                        Av. del Libertador 1000, Piso 15<br>Buenos Aires, Argentina
+                    </div>
+                </div>
+                <div class="info-line">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Direct Line</strong><br>
+                        (011) 4321-9876
+                    </div>
+                </div>
+                <div class="info-line">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        consultas@lexasociados.com.ar
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Subject (e.g., Labor Counseling)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" placeholder="Briefly describe your consultation..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-gold" style="border:none; cursor:pointer;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Lex & Associates. All rights reserved. Demo landing page by InerciaDev.</p>
+    </footer>
+</body>
+</html>

@@ -100,9 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
             
+            const isEn = document.documentElement.lang === 'en';
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = 'Enviando...';
+            submitBtn.textContent = isEn ? 'Sending...' : 'Enviando...';
             submitBtn.disabled = true;
             
             // Obtener valores del formulario
@@ -113,6 +114,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const service = serviceSelect.options[serviceSelect.selectedIndex].text;
             const message = document.getElementById('message').value;
 
+            // Prepare the payload based on language for formsubmit dashboard readability
+            const payload = isEn ? {
+                "Name": name,
+                "Email": email,
+                "Phone": phone,
+                "Service of Interest": service,
+                "Message": message,
+                "_subject": `New contact at InerciaDev from ${name}`
+            } : {
+                "Nombre": name,
+                "Email": email,
+                "Telefono": phone,
+                "Servicio_de_interes": service,
+                "Mensaje": message,
+                "_subject": `Nuevo contacto en InerciaDev de ${name}`
+            };
+            
             // Usar FormSubmit para enviar el mail sin backend
             fetch("https://formsubmit.co/ajax/ezequielcoronel199@gmail.com", {
                 method: "POST",
@@ -120,27 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({
-                    Nombre: name,
-                    Email: email,
-                    Telefono: phone,
-                    Servicio_de_interes: service,
-                    Mensaje: message,
-                    _subject: `Nuevo contacto en InerciaDev de ${name}`
-                })
+                body: JSON.stringify(payload)
             })
             .then(response => response.json())
             .then(data => {
                 if(data.success) {
-                    alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+                    alert(isEn ? 'Message sent successfully! We will get in touch soon.' : '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
                     contactForm.reset();
                 } else {
-                    alert('Hubo un error al enviar el mensaje. Por favor intenta nuevamente.');
+                    alert(isEn ? 'There was an error sending your message. Please try again.' : 'Hubo un error al enviar el mensaje. Por favor intenta nuevamente.');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Ocurrió un error. Por favor, intenta de nuevo o contáctanos por otros medios.');
+                alert(isEn ? 'An error occurred. Please try again or contact us through other means.' : 'Ocurrió un error. Por favor, intenta de nuevo o contáctanos por otros medios.');
             })
             .finally(() => {
                 submitBtn.textContent = originalBtnText;
