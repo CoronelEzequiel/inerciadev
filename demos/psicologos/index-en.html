@@ -36,6 +36,7 @@
         .nav-links a:hover { color: var(--accent); }
         .btn-nav { border: 1px solid var(--accent); padding: 8px 22px; border-radius: 30px; color: var(--accent) !important; transition: all 0.3s; }
         .btn-nav:hover { background: var(--accent); color: var(--bg-dark) !important; }
+        .mobile-toggle { display: none; }
 
         /* Hero */
         .hero {
@@ -129,10 +130,90 @@
 
         @media (max-width: 992px) {
             .hero-grid, .approach-grid, .contact-wrapper { grid-template-columns: 1fr; }
-            .hero-img-wrapper { order: -1; }
-            .hero { text-align: center; }
+            .hero-img-wrapper { order: -1; margin-bottom: 30px; }
+            .hero { text-align: center; padding: 120px 20px 60px; }
             .hero-content { margin: 0 auto; }
-            .section-title { font-size: 2.2rem; }
+            .section-header h2 { font-size: 2.2rem; }
+            .approach-text { text-align: center; }
+            .approach-list { text-align: left; }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 20px; }
+            .quote-section { padding: 60px 20px; }
+            nav { padding: 20px 5%; }
+            .mobile-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 110;
+                transition: color 0.3s;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: rgba(15, 21, 17, 0.98);
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 35px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+                z-index: 105;
+                padding: 40px 20px;
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+            .btn-nav {
+                width: 100%;
+                text-align: center;
+                padding: 12px 30px;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; margin-bottom: 30px; }
+            .specialties-grid { grid-template-columns: 1fr; gap: 20px; }
+            .specialty-card { padding: 35px 25px; }
+            .approach-img { max-width: 480px; margin: 0 auto; }
+            .approach-text h2 { font-size: 2.2rem; }
+            .quote-text { font-size: 1.6rem; }
+            .contact-info { padding: 40px 25px; }
+            .contact-form { padding: 40px 25px; }
+            .contact-info h3 { font-size: 1.8rem; }
+            .contact-form h3 { font-size: 1.8rem; }
+            .float-wpp {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+            .back-link {
+                bottom: 20px;
+                left: 20px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row { grid-template-columns: 1fr; gap: 20px; }
+            .hero h1 { font-size: 2.1rem; }
+            .section-header h2 { font-size: 1.8rem; }
+            .approach-text h2 { font-size: 1.8rem; }
+            .quote-text { font-size: 1.3rem; }
         }
 
         /* WhatsApp Floating Button - Premium Accent */
@@ -173,6 +254,9 @@
             <li><a href="#">My Approach</a></li>
             <li><a href="#contacto" class="btn-nav">Book Session</a></li>
         </ul>
+        <button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
 
     <!-- Hero Section -->
@@ -336,5 +420,34 @@
     <a href="https://wa.me/5491158022401" class="float-wpp" target="_blank" aria-label="Contact us on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- Mobile Menu JS Script -->
+    <script>
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+            mobileToggle.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = mobileToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.className = 'fa-solid fa-xmark';
+            } else {
+                icon.className = 'fa-solid fa-bars';
+            }
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
+            });
+        });
+    </script>
 </body>
 </html>
